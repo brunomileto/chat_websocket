@@ -1,0 +1,282 @@
+object frmServer_FMX: TfrmServer_FMX
+  Left = 0
+  Top = 0
+  Caption = 'WebSocket Server Firemonkey'
+  ClientHeight = 378
+  ClientWidth = 573
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
+  object memoLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 16.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 545.000000000000000000
+    Size.Height = 273.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 545.000000000000000000
+    Viewport.Height = 273.000000000000000000
+  end
+  object btnStart: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Start'
+    OnClick = btnStartClick
+  end
+  object btnStop: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Stop'
+    OnClick = btnStopClick
+  end
+  object txtHost: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    Text = '127.0.0.1'
+    Position.X = 184.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    object Label1: TLabel
+      Position.X = -40.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 15.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Host:'
+    end
+  end
+  object btnChrome: TButton
+    Position.X = 480.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = 'Chrome'
+    OnClick = btnChromeClick
+    object btnFirefox: TButton
+      Position.Y = 32.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Firefox'
+      OnClick = btnFirefoxClick
+      object btnSafari: TButton
+        Position.Y = 32.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Safari'
+        OnClick = btnSafariClick
+      end
+    end
+  end
+  object WSServer: TsgcWebSocketHTTPServer
+    Port = 5416
+    OnConnect = WSServerConnect
+    OnMessage = WSServerMessage
+    OnDisconnect = WSServerDisconnect
+    OnError = WSServerError
+    OnCommandGet = WSServerCommandGet
+    LoadBalancer.AutoRegisterBindings = False
+    LoadBalancer.AutoRestart = 0
+    LoadBalancer.Enabled = False
+    LoadBalancer.Port = 0
+    Authentication.Enabled = False
+    Authentication.AllowNonAuth = False
+    Authentication.URL.Enabled = True
+    Authentication.Session.Enabled = True
+    Authentication.Basic.Enabled = False
+    AutoStartSession = False
+    Bindings = <>
+    HeartBeat.Enabled = False
+    HeartBeat.Interval = 300
+    HeartBeat.Timeout = 0
+    KeepAlive = False
+    MaxConnections = 0
+    SessionState = False
+    SessionTimeOut = 0
+    SSLOptions.VerifyCertificate = False
+    SSLOptions.VerifyDepth = 0
+    SSLOptions.Version = tlsUndefined
+    SSLOptions.OpenSSL_Options.APIVersion = oslAPI_1_0
+    SSLOptions.OpenSSL_Options.LibPath = oslpNone
+    SSLOptions.OpenSSL_Options.ECDHE = False
+    SSLOptions.Port = 0
+    ThreadPool = False
+    ThreadPoolOptions.MaxThreads = 0
+    ThreadPoolOptions.PoolSize = 32
+    Extensions.DeflateFrame.Enabled = False
+    Extensions.DeflateFrame.WindowBits = 15
+    Extensions.PerMessage_Deflate.Enabled = False
+    Extensions.PerMessage_Deflate.ClientMaxWindowBits = 15
+    Extensions.PerMessage_Deflate.ClientNoContextTakeOver = False
+    Extensions.PerMessage_Deflate.MemLevel = 1
+    Extensions.PerMessage_Deflate.ServerMaxWindowBits = 15
+    Extensions.PerMessage_Deflate.ServerNoContextTakeOver = False
+    FallBack.Flash.Domain = '*'
+    FallBack.Flash.Enabled = False
+    FallBack.Flash.Ports = '*'
+    FallBack.ServerSentEvents.Enabled = False
+    FallBack.ServerSentEvents.Retry = 3
+    Options.CleanDisconnect = False
+    Options.FragmentedMessages = frgOnlyBuffer
+    Options.HTMLFiles = True
+    Options.JavascriptFiles = True
+    Options.ReadTimeOut = 10
+    Options.WriteTimeOut = 0
+    Options.RaiseDisconnectExceptions = True
+    Options.ValidateUTF8 = False
+    QueueOptions.Binary.Level = qmNone
+    QueueOptions.Ping.Level = qmNone
+    QueueOptions.Text.Level = qmNone
+    Specifications.Drafts.Hixie76 = True
+    Specifications.RFC6455 = True
+    NotifyEvents = neAsynchronous
+    LogFile.Enabled = False
+    Throttle.BitsPerSec = 0
+    Throttle.Enabled = False
+    WatchDog.Attempts = 0
+    WatchDog.Enabled = False
+    WatchDog.Interval = 60
+    WatchDog.Monitor.Enabled = False
+    WatchDog.Monitor.TimeOut = 10
+    IOHandlerOptions.IOCP.IOCPThreads = 8
+    IOHandlerOptions.IOCP.TimeOut = 10000
+    IOHandlerOptions.IOCP.WorkOpThreads = 32
+    IOHandlerOptions.IOHandlerType = iohDefault
+    HTTP2Options.AltSvc.Enabled = True
+    HTTP2Options.Enabled = False
+    HTTP2Options.Events.OnConnect = False
+    HTTP2Options.Events.OnDisconnect = False
+    HTTP2Options.FragmentedData = h2fdOnlyBuffer
+    HTTP2Options.Settings.EnablePush = True
+    HTTP2Options.Settings.HeaderTableSize = 4096
+    HTTP2Options.Settings.InitialWindowSize = 65535
+    HTTP2Options.Settings.MaxConcurrentStreams = 2147483647
+    HTTP2Options.Settings.MaxFrameSize = 16384
+    HTTP2Options.Settings.MaxHeaderListSize = 2147483647
+    HTTPUploadFiles.MinSize = 0
+    HTTPUploadFiles.RemoveBoundaries = True
+    HTTPUploadFiles.StreamType = pstMemoryStream
+    Left = 184
+    Top = 48
+  end
+  object pageChat: TPageProducer
+    HTMLDoc.Strings = (
+      '<!DOCTYPE html>'
+      '<html>'
+      '<head>'
+      #9'<meta charset="utf-8">'
+      
+        #9'<meta name="viewport" content="width=device-width, initial-scal' +
+        'e=1">'
+      #9'<title>Server Chat Demo</title>'
+      
+        #9'<script src="http://<#host>:<#port>/sgcWebSockets.js"></script>' +
+        #9
+      
+        #9'<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.' +
+        '0/jquery.mobile-1.1.0.min.css" />'
+      
+        #9'<script src="http://code.jquery.com/jquery-1.6.4.min.js"></scri' +
+        'pt>'
+      
+        #9'<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-' +
+        '1.1.0.min.js"></script>'
+      #9'<script type="text/javascript">'
+      'function wssend()'
+      '{'
+      #9'if (ws.state() === "open") {'
+      #9#9'if (document.getElementById('#39'chat'#39').value == "") {'
+      #9#9
+      #9#9'} else {'
+      
+        #9#9#9'ws.send('#39'<b>'#39' + document.getElementById('#39'name'#39').value + '#39': </' +
+        'b>'#39' + document.getElementById('#39'chat'#39').value);     '
+      #9#9#9'document.getElementById('#39'chat'#39').value = '#39#39';'
+      #9#9'}'
+      #9'};'
+      '}'
+      ''
+      'function wschat()'
+      '{'
+      #9'  ws = new sgcWebSocket('#39'ws://<#host>:<#port>'#39');'
+      #9'  ws.on('#39'open'#39', function(evt){'
+      
+        #9#9#9'document.getElementById('#39'log'#39').innerHTML = "<li><b>#connected' +
+        '</b></li>" + document.getElementById('#39'log'#39').innerHTML;'
+      #9#9'}'
+      '      );'#9'  '
+      '      ws.on('#39'message'#39', function(evt){'
+      
+        #9#9#9'document.getElementById('#39'log'#39').innerHTML = "<li>" + evt.messa' +
+        'ge + "</li>" + document.getElementById('#39'log'#39').innerHTML;'
+      #9#9'}'
+      #9'  );'
+      #9'  ws.on('#39'close'#39', function(event){'
+      
+        #9#9#9'document.getElementById('#39'log'#39').innerHTML = "<li><b>#closed</b' +
+        '></li>" + document.getElementById('#39'log'#39').innerHTML;'
+      #9#9'}'
+      '      );'#9
+      '}'
+      '</script>'
+      ''
+      '</head> '
+      '<body> '
+      '<div data-role="page" id="wsdemo_chat">'
+      ''
+      #9'<div data-role="header" data-theme="b">'#9
+      #9#9'<h1>Chat</h1>'
+      
+        #9#9'<a href="#home" data-icon="home" data-iconpos="notext" data-di' +
+        'rection="reverse" class="ui-btn-left jqm-home">Home</a>'
+      #9'</div><!-- /header -->'
+      ''
+      #9'<div data-role="content">'#9
+      #9#9'<h2>Press Start, type your name and Send your message</h2>'
+      
+        #9#9#9'<a href="javascript:wschat()" data-role="button" data-inline=' +
+        '"true">Start</a>'
+      #9#9#9'<form>'
+      
+        #9#9#9#9'<input type="text" id="name" data-mini="true" placeholder="t' +
+        'ype your Name" />'
+      
+        #9#9#9#9'<input type="text" id="chat" data-mini="true" placeholder="t' +
+        'ype and press Send to chat" /><a href="javascript:wssend()" data' +
+        '-role="button" data-inline="true">Send</a>'
+      #9#9#9'</form>'#9#9#9
+      
+        #9#9#9'<ul id="log" style="overflow: auto; list-style: none; padding' +
+        ':0;background:#ffffff"></ul>'
+      #9'</div><!-- /content -->'#9
+      #9'<div data-role="footer" class="footer-docs" data-theme="c">'
+      #9#9#9'<p>&copy; 2020 eSeGeCe.com</p>'
+      #9'</div>'#9#9
+      '</div><!-- /page -->'
+      ''
+      '</body>'
+      '</html>'
+      '')
+    OnHTMLTag = pageChatHTMLTag
+    Left = 264
+    Top = 48
+  end
+end
